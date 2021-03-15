@@ -1,0 +1,129 @@
+body{
+    font-weight: 300;
+}
+
+
+button{
+background-color: rgb(18, 96, 184);
+color: white;
+padding: 3px 25px;
+font-size: smaller;
+font-style: bold;
+border: none;
+outline: none;
+}
+
+img{
+    width: 100%;
+}
+
+.main{
+    padding: 5%;
+}
+
+.save-button{
+    width: 100%;
+    height: 40px;
+    margin-top: 35px;
+}
+
+.hotel-meta{
+    width: 100px;
+}
+
+.hotel-card{
+    border: 1px solid lightgrey;
+    padding: 35px;
+    height: 250px;
+    max-width: 700px;
+    cursor: pointer;
+    transition: 300ms;
+    
+    &:hover{
+        box-shadow: 3px 3px 2px lightgray;
+        background-color: #eee;
+        transition: 300ms;
+    }
+}
+
+.selected{
+    box-shadow: 3px 3px 2px lightgray;
+    background-color: #eee;
+    transition: 300ms;
+}
+
+.hotel-image{
+    position: absolute;
+   width: 120%;
+    left: -40px;
+   height: 160px;
+}
+
+.hotel-card-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.inputs-container{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../assets/los-cocos-room-header-2-x.png');
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputs-bar{
+    background-color: rgba(18, 96, 186,.3);
+    width: 100%;
+    // height: 55px;
+    padding: 15px;
+display: flex;
+justify-content: center;  
+}
+
+.form-control{
+    width: 155px;
+    margin: 0 5px;
+    border-radius: 0;
+    font-size: smaller;
+}
+
+.summary-card{
+border: 1px solid lightgrey;
+padding:20px;
+}
+
+.top-bar{
+    display: flex;
+    width: 100%;
+
+    ul{
+        width: 40%;
+        display: flex;
+        padding-top: 25px;
+        justify-content: space-evenly;
+        list-style: none;
+        color: gray;
+    }
+}
+
+.top-logo{
+    display: flex;
+    margin-top: 10px;
+}
+
+.logo-text{
+    color: rgb(39, 152, 160);
+    font-weight: 700;
+}
+
+.logo-sub{
+    color: grey;
+    font-size: x-small;
+}
