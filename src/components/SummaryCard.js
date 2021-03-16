@@ -14,7 +14,7 @@ const SummaryCard = ({ booked, days, submit, promo, selectedRoom }) => {
       <div className="summary-card">
         <h4>Reservation Summary</h4>
         {!selectedRoom.name && (
-          <p style={{ color: "green" }}>Please select a hotel</p>
+          <p style={{ color: "green" }}>Please select a room</p>
         )}
         <h5>{selectedRoom.name}</h5>
 
