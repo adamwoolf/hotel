@@ -4,7 +4,7 @@ import bed from "../assets/double-bed.svg";
 
 const HotelCard = ({ h, click, promo, selected }) => {
   let price = h.price;
-  if (promo) price = h.price - h.price / 10;
+  if (promo) price = h.price - h.price / promo;
 
   return (
     <div
@@ -36,7 +36,7 @@ const HotelCard = ({ h, click, promo, selected }) => {
                     <small>People: {h.people}</small>
                   </div>
                 </div>
-                <h6>€{price}</h6>
+                <h6>€{price.toFixed(2)}</h6>
               </div>
             </div>
           </div>

@@ -4,7 +4,7 @@ import moment from "moment";
 
 const SummaryCard = ({ booked, days, submit, promo, selectedRoom }) => {
   let price = selectedRoom.price;
-  if (promo) price = selectedRoom.price - selectedRoom.price / 10;
+  if (promo) price = selectedRoom.price - selectedRoom.price / promo;
 
 
 
@@ -59,7 +59,7 @@ const SummaryCard = ({ booked, days, submit, promo, selectedRoom }) => {
         {selectedRoom.price && booked.startDate && (
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <h6>Total</h6>
-            <h6>€{price * days}</h6>
+            <h6>€{price.toFixed(2) * days}</h6>
           </div>
         )}
         <div style={{ display: "flex" }}>

@@ -71,10 +71,11 @@ let booking = {
 localStorage.setItem('Room Booking', JSON.stringify(booking))
 }
 
-const [promo, setPromo] = useState(false)
+const [promo, setPromo] = useState(null)
 
 useEffect(() => {
-if(window.location.href.includes('promo_code')){ setPromo(true)}
+if(window.location.href.includes('promo_code')){ setPromo(parseInt(window.location.href.split('=')[1]))}
+console.log(window.location.href.split('=')[1])
 
 }, [])
 
