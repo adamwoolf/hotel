@@ -36,6 +36,10 @@ img {
   cursor: pointer;
 }
 
+.save-button:disabled {
+  cursor: not-allowed;
+}
+
 .hotel-meta {
   width: 100px;
 }

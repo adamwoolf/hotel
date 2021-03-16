@@ -66,7 +66,7 @@ const SummaryCard = ({ booked, days, submit, promo, selectedRoom }) => {
           <button
             onClick={submit}
             className="save-button"
-            disabled={!booked.adultsSelected}
+            disabled={!booked.startDate || !selectedRoom.price}
           >
             {!booked.startDate || !selectedRoom.price ? "Please make a selection" : "Save"}
           </button>
