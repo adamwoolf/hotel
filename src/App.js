@@ -10,6 +10,8 @@ import HotelCard from './components/HotelCard';
 import hotel1 from './assets/room_1.png'
 import hotel2 from './assets/room_2.png'
 import hotel3 from './assets/room_3.png'
+import moment from 'moment';
+import Footer from './components/Footer';
 
 const adults = [
   'Adults: 0', 'Adults: 1', 'Adults: 2', 'Adults: 3', 'Adults: 4',
@@ -32,24 +34,41 @@ const hotels = [
 
 
 function App() {
-  let today = new Date()
-const [startDate, setStartDate] = useState(null)
-const [endDate, setEndDate] = useState(null)
-const [adultsSelected, setAdultsSelected] = useState(0)
-const [childrenSelected, setChildrenSelected] = useState(0)
-const [selectedHotel, setSelectedHotel] = useState({})
-const [booking, setBooking] = useState({})
+  const today = moment().format('DD/MM/YYYY')
+  const tomorrow  = moment().add(1,'days').format('DD/MM/YYYY');
+  const [startDate, setStartDate] = useState(today)
+  const [endDate, setEndDate] = useState(tomorrow)
+  const [adultsSelected, setAdultsSelected] = useState(0)
+  const [childrenSelected, setChildrenSelected] = useState(0)
+  const [selectedRoom, setSelectedRoom] = useState({})
+  const [booking, setBooking] = useState({})
+
+
 
 const modify = () => {
 const booked = {
   startDate, endDate, adultsSelected, childrenSelected
 }
 setBooking(booked)
-console.log(booked);
+
 }
 
+var a = moment(startDate, "DD/MM/YYYY");
+var b = moment(endDate, "DD/MM/YYYY");
+var days = b.diff(a, "days");
+
+
 const onSubmit = () => {
-  alert('not yet!')
+let booking = {
+  arrival: startDate, 
+  departure: endDate,
+  adults: adultsSelected,
+  children: childrenSelected,
+  room: selectedRoom,
+  numberOfNights: days,
+  totalPrice: days * selectedRoom.price
+}
+localStorage.setItem('Room Booking', JSON.stringify(booking))
 }
 
 const [promo, setPromo] = useState(false)
@@ -64,8 +83,8 @@ if(window.location.href.includes('promo_code')){ setPromo(true)}
 <TopBar/>
 <InputBar
 startDate={startDate}
-setStart={e => setStartDate(e.target.value)}
-setEnd={e => setEndDate(e.target.value)}
+setStart={setStartDate}
+setEnd={setEndDate}
 endDate={endDate}
 children={children}
 adults={adults}
@@ -74,26 +93,27 @@ selectChildren={e =>  setChildrenSelected(+e.target.value)}
 modify={modify}
 
 />
-<ProgressBar/>  
 <div className="main" > 
 <Row>
   <Col md={8}>
-    {hotels.map((hotel, index) => 
-    <HotelCard click={() => setSelectedHotel(hotel)} promo={promo} selected={selectedHotel} key={index} h={hotel}/>
- )}
+  <ProgressBar/>  
 
-  
+    {hotels.map((hotel, index) => 
+    <HotelCard click={() => setSelectedRoom(hotel)} promo={promo} selected={selectedRoom} key={index} h={hotel}/>
+ )}
   </Col>
   <Col md={4} >
   <SummaryCard
   booked={booking}
-  selectedHotel={selectedHotel}
+  selectedRoom={selectedRoom}
   promo={promo}
   submit={onSubmit}
+  days={days}
   />
   </Col>
   </Row>    
   </div>
+  <Footer/>
    </div>
   );
 }
